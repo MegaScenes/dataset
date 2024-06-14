@@ -114,27 +114,29 @@ We provide details on Wikidata TODO
 -->
 
 ## `reconstruct/` Directory
-This directory contains the COLMAP sparse point cloud reconstructions for each scene. The `reconstruct/` directory is organized by scenes, according to a scene-ID number as described in [Scene Folders](#scene-folders).
+This directory contains the COLMAP sparse point cloud reconstructions for each scene. The `reconstruct/` directory is organized by scenes, according to a scene-ID number as described in [Scene Folders](#scene-folders). Each reconstruction consists of an `images.bin`, `cameras.bin`, and `points3D.bin` as described [here](https://colmap.github.io/format.html). A scene may have zero or more reconstructions; the `reconstruct/` folder only contains scenes with one or more.
 
 The `reconstruct/` folder is 429 GB.
 
-
 ### Example
+Suppose a scene with ID `1234` has three reconstructions. In this scene's `sparses/` folder, there will be three folders numbered from `0` to `2`.
 
-The `reconstruction.tar.gz` file will extact into the scene directory as follows:
-- `sparses/`
-  - `0/`
-    - `images.bin`
-    - `cameras.bin`
-    - `points3D.bin`
-  - `1/`
-    - ...
-  - ...
- 
-Note that this is a subset of all released id's
-
-COLMAP sparse reconstructions are represented by numbered subdirectories in `sparse/`.
-The COLMAP databases contain information on SIFT keypoints and descriptors for scene images, as well as pairwise epipolar geometries.
+Specifically, the format is as follows:
+- `reconstruct/`
+    - `001/234/`
+        - `sparses/`
+            - `0/`
+                - `images.bin`
+                - `cameras.bin`
+                - `points3D.bin`
+            - `1/`
+                - `images.bin`
+                - `cameras.bin`
+                - `points3D.bin`
+            - `2/`
+                - `images.bin`
+                - `cameras.bin`
+                - `points3D.bin`
 
 ## Scene Folders
 The dataset partitions scenes using two subfolders. The first subfolder uses the first three digits of the 6-digit zero-padded scene ID. The second subfolder uses the last three digits.
