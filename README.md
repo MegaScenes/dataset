@@ -21,6 +21,8 @@ The bucket's directory tree is as follows:
     - `reconstruct/`
         - `000/000/` . . . `458/150/`
     - `README.md`
+
+A scene is represented by its zero-padded six-digit scene-ID number as described in [Scene Folders](#scene-folders). A directory of scenes can be found at - `s3://megascenes/metadata/categories.json`.
  
 
 ## `databases/` Directory
