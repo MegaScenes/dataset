@@ -1,4 +1,7 @@
 # MegaScenes Dataset v1.0
+
+[**Paper**](https://megascenes.github.io/MegaScenes_paper_v1.pdf) | [**Arxiv**](https://arxiv.org/abs/) | [**Project Page**](https://megascenes.github.io) <br>
+
 The MegaScenes Dataset is an extensive collection of around 430K scenes and 9M images and epipolar geometries, featuring over 100K structure-from-motion reconstructions from 2M of these images. The images of these scenes are captured under varying conditions, including different times of day, various weather and illumination, and from different devices with distinct camera intrinsics.
 
 # Data Format
@@ -148,3 +151,6 @@ For example, if a scene has an ID of `533`, it is zero-padded to `000533`. This 
 If a scene has an id of `422678`, it translates to the directory `422/678/`.
 
 The data associated with the scene resides in the latter subfolder.
+
+# License
+This dataset is licensed under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/). The photos in the `images/` folder have their own licenses.
