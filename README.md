@@ -99,8 +99,8 @@ This directory houses metadata for the dataset.
 
 The `metadata/` directory is broken into two subdirectories: 
 
-- `subcat/` (TODO GB), which contains JSON files of the subcategory tree for each scene
-- `wikidata/` (TODO GB), which contains JSON files for all Wikidata entries related to a scene or their heirarchical classes.
+- `subcat/` (386 MB), which contains JSON files of the subcategory tree for each scene
+- `wikidata/` (4.5 GB), which contains JSON files for all Wikidata entries related to a scene or their heirarchical classes.
 
 The `subcat/` subdirectory is organized by scenes, according to a scene-ID number as described in [Scene Folders](#scene-folders).
 
