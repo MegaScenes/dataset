@@ -4,11 +4,17 @@
 
 The MegaScenes Dataset is an extensive collection of around 430K scenes and 9M images and epipolar geometries, featuring over 100K structure-from-motion reconstructions from 2M of these images. The images of these scenes are captured under varying conditions, including different times of day, various weather and illumination, and from different devices with distinct camera intrinsics.
 
-# Data Format
-The MegaScenes S3 bucket URL is `s3://megascenes/`, and is hosted in the `US-West-2` AWS Region. 
+# Data Access
+The MegaScenes Dataset is hosted on [Amazon S3](https://aws.amazon.com/s3/) thanks to the [AWS Open Data Sponsorship Program](https://aws.amazon.com/opendata/).
 
+Specifically, MegaScenes uses the AWS S3 bucket URL `s3://megascenes/` in the `US-West-2` AWS Region.
+
+The dataset can be accessed using the [AWS Command Line Interface](https://aws.amazon.com/cli/). Alternatively, files can be downloaded over HTTP using the base URL `https://megascenes.s3.us-west-2.amazonaws.com/`.
+
+
+## Dataset Layout
 The bucket's directory tree is as follows:
-- `s3://megascenes/`
+- `s3://megascenes/` or `https://megascenes.s3.us-west-2.amazonaws.com/`
     - `databases/`
         - `main/` 
             - `000/000/` . . . `458/152/`
