@@ -97,17 +97,49 @@ For a scene with ID `1234`, the image files are as follows:
 ## `metadata/` Directory
 This directory houses metadata for the dataset.
 
-The `metadata/` directory is broken into two subdirectories: 
+The `metadata/` directory has the following contents: 
 
-- `subcat/` (386 MB), which contains JSON files of the subcategory tree for each scene
-- `wikidata/` (4.5 GB), which contains JSON files for all Wikidata entries related to a scene or their heirarchical classes.
+- `subcat/` (386 MB), which is a directory that contains JSON files of subcategory information for scenes with at least one subcategory
+- `wikidata/` (4.5 GB), which is a directory contains JSON files for all Wikidata entries related to a scene or their heirarchical classes
+- `categories.json` (19.2 MB), which is dictionary that maps a Wikimedia Commons category name to a scene-ID.
 
-The `subcat/` subdirectory is organized by scenes, according to a scene-ID number as described in [Scene Folders](#scene-folders).
+### Subcategory Information
+Subcategory information resides in the `metadata/subcat/` directory. This directory is organized by scene-ID number as described in [Scene Folders](#scene-folders).
 
+A scene is present in `metadata/subcat/` only if it has at least one category besides the main category. Such a scene will have a `subcats.json` to represent the subcategory data.
+
+A `subcats.json` file is a dictionary that contains the following fields:
+- `main_category`: a string of the name of the Wikimedia Commons top-level category.
+- `graph`: a dictionary mapping a Wikimedia Commons category to a list of its direct subcategories. A category will be a key in `graph` if it has been visited. An empty list means that the category has no subcategories. 
+- `frontier`: a list of subcategories present in `graph` that have not been expanded to have its own key in `graph`.
+
+#### Example
+The category [Arco degli Argentari](https://commons.wikimedia.org/wiki/Category:Arco_degli_Argentari) has a scene-ID of `7`. The subcategory information for this scene is at `s3://megascenes/metadata/subcat/000/007/subcats.json`, and has the following contents:
+```
+{
+    "main_category": "Arco_degli_Argentari",
+    "graph": {
+        "Arco_degli_Argentari": [
+            "Arco_degli_Argentari_in_art",
+            "Historical_images_of_the_Arco_degli_Argentari"
+        ],
+        "Arco_degli_Argentari_in_art": [],
+        "Historical_images_of_the_Arco_degli_Argentari": [
+            "Arco_degli_Argentari_in_art"
+        ]
+    },
+    "frontier": []
+}
+```
+Here, the graph shows that the main category [Arco degli Argentari](https://commons.wikimedia.org/wiki/Category:Arco_degli_Argentari) has two subcategories: [Arco degli Argentari in art]([https://commons.wikimedia.org/wiki/Category:Arco_degli_Argentari](https://commons.wikimedia.org/wiki/Category:Arco_degli_Argentari_in_art)) and [Historical images of the Arco degli Argentari](https://commons.wikimedia.org/wiki/Category:Historical_images_of_the_Arco_degli_Argentari). [Arco degli Argentari in art]([https://commons.wikimedia.org/wiki/Category:Arco_degli_Argentari](https://commons.wikimedia.org/wiki/Category:Arco_degli_Argentari_in_art)) has no subcategories, hence an empty list associated with this key. [Historical images of the Arco degli Argentari](https://commons.wikimedia.org/wiki/Category:Historical_images_of_the_Arco_degli_Argentari) has the subcategory [Arco degli Argentari in art]([https://commons.wikimedia.org/wiki/Category:Arco_degli_Argentari](https://commons.wikimedia.org/wiki/Category:Arco_degli_Argentari_in_art)).
+
+The frontier list is empty, meaning that this subcategory graph is expanded in its entirety. 
+
+
+## Wikidata Entries
 The `wikidata/` subcategory is organized by Wikidata Q-ID. The first three digits of the Q-ID define the three subfolders that the Wikidata JSON information can be found in. If the Q-ID has less than three digits, then its JSON resides in the `other/` folder. Unlike the scene IDs, this number is NOT zero-padded.
 
-### Example
-The subcategory information for a scene with ID `1234` is at `metadata/subcat/001/234/database.db`.
+
 
 The JSON for a Wikidata item with Q-ID `Q1234` is located at `metadata/wikidata/1/2/3/Q1234.json`.
 
