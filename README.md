@@ -50,6 +50,8 @@ For a scene with ID `1234`, the database files are as follows:
 - `databases/main/001/234/database.db`
 - `databases/descriptors/001/234/descriptors.db.gz`
 
+### 
+
 <!--
 ### Tutorials
 We provide a tutorial on how to merge the descriptors into the main database here. TODO
@@ -131,19 +133,25 @@ The category [Arco degli Argentari](https://commons.wikimedia.org/wiki/Category:
     "frontier": []
 }
 ```
-Here, the graph shows that the main category [Arco degli Argentari](https://commons.wikimedia.org/wiki/Category:Arco_degli_Argentari) has two subcategories: [Arco degli Argentari in art]([https://commons.wikimedia.org/wiki/Category:Arco_degli_Argentari](https://commons.wikimedia.org/wiki/Category:Arco_degli_Argentari_in_art)) and [Historical images of the Arco degli Argentari](https://commons.wikimedia.org/wiki/Category:Historical_images_of_the_Arco_degli_Argentari). [Arco degli Argentari in art]([https://commons.wikimedia.org/wiki/Category:Arco_degli_Argentari](https://commons.wikimedia.org/wiki/Category:Arco_degli_Argentari_in_art)) has no subcategories, hence an empty list associated with this key. [Historical images of the Arco degli Argentari](https://commons.wikimedia.org/wiki/Category:Historical_images_of_the_Arco_degli_Argentari) has the subcategory [Arco degli Argentari in art]([https://commons.wikimedia.org/wiki/Category:Arco_degli_Argentari](https://commons.wikimedia.org/wiki/Category:Arco_degli_Argentari_in_art)).
+Here, the graph shows that the main category [Arco degli Argentari](https://commons.wikimedia.org/wiki/Category:Arco_degli_Argentari) has two subcategories: [Arco degli Argentari in art](https://commons.wikimedia.org/wiki/Category:Arco_degli_Argentari_in_art) and [Historical images of the Arco degli Argentari](https://commons.wikimedia.org/wiki/Category:Historical_images_of_the_Arco_degli_Argentari). The category [Arco degli Argentari in art](https://commons.wikimedia.org/wiki/Category:Arco_degli_Argentari_in_art) has no subcategories, hence the empty list. In contrast, the category [Historical images of the Arco degli Argentari](https://commons.wikimedia.org/wiki/Category:Historical_images_of_the_Arco_degli_Argentari) has the subcategory [Arco degli Argentari in art](https://commons.wikimedia.org/wiki/Category:Arco_degli_Argentari_in_art).
 
 The frontier list is empty, meaning that this subcategory graph is expanded in its entirety. 
 
 
-## Wikidata Entries
+### Wikidata Entries
 The `wikidata/` subcategory is organized by Wikidata Q-ID. The first three digits of the Q-ID define the three subfolders that the Wikidata JSON information can be found in. If the Q-ID has less than three digits, then its JSON resides in the `other/` folder. Unlike the scene IDs, this number is NOT zero-padded.
 
 
+#### Examples
 
 The JSON for a Wikidata item with Q-ID `Q1234` is located at `metadata/wikidata/1/2/3/Q1234.json`.
 
 The JSON for a Wikidata item with Q-ID `Q12` is located at `metadata/wikidata/other/Q12.json`.
+
+#### Resources
+For JSON documentation, see this page on [Wikibase JSON](https://doc.wikimedia.org/Wikibase/master/php/docs_topics_json.html).
+
+For additional tools to parse this JSON, see this Wikidata page on [Data access](https://www.wikidata.org/wiki/Wikidata:Data_access).
 
 <!--
 ### Tutorials
