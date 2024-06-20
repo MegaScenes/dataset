@@ -4,6 +4,8 @@
 
 The MegaScenes Dataset is an extensive collection of around 430K scenes and 9M images and epipolar geometries, featuring over 100K structure-from-motion reconstructions from 2M of these images. The images of these scenes are captured under varying conditions, including different times of day, various weather and illumination, and from different devices with distinct camera intrinsics.
 
+To view reconstructions in the browser, see our [**Web Viewer**](https://megascenes.github.io/web-viewer/)!
+
 # Data Access
 The MegaScenes Dataset is hosted on [Amazon S3](https://aws.amazon.com/s3/) thanks to the [AWS Open Data Sponsorship Program](https://aws.amazon.com/opendata/).
 
@@ -31,7 +33,7 @@ The bucket's directory tree is as follows:
         - `000/000/` . . . `458/150/`
     - `README.md`
 
-A scene is represented by its zero-padded six-digit scene-ID number as described in [Scene Folders](#scene-folders) in applicable subdirectores. A directory that links scene name to scene-ID can be found at: `s3://megascenes/metadata/categories.json`. For details on subfolder contents, see the respective sections below.
+A scene is represented by its zero-padded six-digit scene-ID number as described in [Scene Folders](#scene-folders) in applicable subdirectories. A directory that links scene name to scene-ID can be found at: `s3://megascenes/metadata/categories.json`. For details on subfolder contents, see the respective sections below.
  
 
 ## `databases/` Directory
@@ -190,13 +192,15 @@ Specifically, the format is as follows:
                 - `points3D.bin`
 
 ## Scene Folders
-The dataset partitions scenes using two subfolders. The first subfolder uses the first three digits of the 6-digit zero-padded scene ID. The second subfolder uses the last three digits.
+The dataset uses a system of two subfolders to divide scenes; each scene has a scene-ID number. The first subfolder uses the first three digits of the 6-digit zero-padded scene ID. The second subfolder uses the last three digits. The data associated with the scene resides in the latter subfolder.
 
-For example, if a scene has an ID of `533`, it is zero-padded to `000533`. This number translates to the directory `000/533/`.
+For example:
+- If a scene has an ID of `533`, it is zero-padded to `000533`. This number translates to the directory `000/533/`.
+- If a scene has an id of `422678`, it translates to the directory `422/678/`.
 
-If a scene has an id of `422678`, it translates to the directory `422/678/`.
+Each scene is based off of a category from Wikimedia Commons. For instance, the scene "Arc de Triomphe de l'Étoile" uses images from [https://commons.wikimedia.org/wiki/Category:Arc_de_Triomphe_de_l%27%C3%89toile]. 
 
-The data associated with the scene resides in the latter subfolder.
+The file `s3://megascenes/metadata/categories.json` [(HTTP Link)](https://megascenes.s3.us-west-2.amazonaws.com/metadata/categories.json) links the category name to the scene-ID.
 
 # License
 This dataset is licensed under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/). The photos in the `images/` folder have their own licenses.
