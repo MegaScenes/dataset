@@ -198,7 +198,7 @@ For example:
 - If a scene has an ID of `533`, it is zero-padded to `000533`. This number translates to the directory `000/533/`.
 - If a scene has an id of `422678`, it translates to the directory `422/678/`.
 
-Each scene is based off of a category from Wikimedia Commons. For instance, the scene "Arc de Triomphe de l'Étoile" uses images from [https://commons.wikimedia.org/wiki/Category:Arc_de_Triomphe_de_l%27%C3%89toile]. 
+Each scene is based off of a category from Wikimedia Commons. For instance, the scene "Arc_de_Triomphe_de_l'Étoile" uses images from [Category:Arc de Triomphe de l'Étoile](https://commons.wikimedia.org/wiki/Category:Arc_de_Triomphe_de_l%27%C3%89toile) and its subcategories. MegaScens use underscores instead of spaces for scene names, but they are interchangable when used in Wikimedia Commons URLs.
 
 The file `s3://megascenes/metadata/categories.json` [(HTTP Link)](https://megascenes.s3.us-west-2.amazonaws.com/metadata/categories.json) links the category name to the scene-ID.
 
