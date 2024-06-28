@@ -202,5 +202,8 @@ Each scene is based off of a category from Wikimedia Commons. For instance, the 
 
 The file `s3://megascenes/metadata/categories.json` [(HTTP Link)](https://megascenes.s3.us-west-2.amazonaws.com/metadata/categories.json) links the category name to the scene-ID.
 
+# Contributions, Issues, and Suggestions
+We are continually looking for ways to improve the dataset. If you find any incorrect reconstructions, please create an GitHub issue [here](https://github.com/MegaScenes/dataset/issues) or discussion post [here](https://github.com/MegaScenes/dataset/wiki).
+
 # License
 This dataset is licensed under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/). The photos in the `images/` folder have their own licenses.
