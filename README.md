@@ -13,7 +13,7 @@ Specifically, MegaScenes uses the AWS S3 bucket URL `s3://megascenes/` in the `U
 
 ## Dataset Access via Command-line Interface (recommended)
 
-Users can access the dataset using [s5cmd](https://github.com/peak/s5cmd) (recommended) or [AWS CLI](https://aws.amazon.com/cli/). These programs are locally installed command-line interfaces that can access publicly hosted datasets on AWS. For the rest of this section, we will share some s5cmd commands.
+Users can access the dataset using [s5cmd](https://github.com/peak/s5cmd) (recommended) or [AWS CLI](https://aws.amazon.com/cli/). These programs are locally installed command-line interfaces that can access publicly hosted datasets on AWS. For the rest of this section, we will share some s5cmd commands. AWS CLI commands typically also work by replacing `s5cmd` with `aws s3` in the below examples.
 
 ### Downloading MegaScenes
 Copy a file or a directory locally: `s5cmd --no-sign-request cp <source_bucket_url> <local_dest>`
