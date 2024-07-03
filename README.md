@@ -11,10 +11,55 @@ The MegaScenes Dataset is hosted on [Amazon S3](https://aws.amazon.com/s3/) than
 
 Specifically, MegaScenes uses the AWS S3 bucket URL `s3://megascenes/` in the `US-West-2` AWS Region.
 
-The dataset can be accessed using the [AWS Command Line Interface](https://aws.amazon.com/cli/). Alternatively, files can be downloaded over HTTP using the base URL `https://megascenes.s3.us-west-2.amazonaws.com/`.
+## Dataset Access via Command-line Interface (recommended)
+
+Users can access the dataset using [s5cmd](https://github.com/peak/s5cmd) (recommended) or [AWS CLI](https://aws.amazon.com/cli/). These programs are locally installed command-line interfaces that can access publicly hosted datasets on AWS.
+
+### Downloading MegaScenes
+Copy a file or a directory locally: `s5cmd --no-sign-request cp <source_bucket_url> <local_dest>`
+
+Alternatively, `sync` can be used instead of `cp`. `sync` additionally checks for differences between AWS and the locally downloaded dataset.
+
+#### Example 1: Downloading a specific directory locally
+If the source URL is a directory, then it must have a wildcard (`*`).
+
+This command recursively downloads the contents of the `images` folder from AWS into the local folder `MegaScenes/images/`:
+```
+s5cmd --no-sign-request cp s3://megascenes/images/* ./MegaScenes/images/
+```
+
+#### Example 2: Downloading a single file locally
+This command downloads a specific `database.db` file from AWS into its respective local folder:
+```
+s5cmd --no-sign-request cp s3://megascenes/databases/main/000/000/database.db ./MegaScenes/databases/main/000/000/database.db
+```
+
+### Listing MegaScenes directory contents
+List directory contents: `s5cmd --no-sign-request ls <bucket_url>`
+
+#### Example
+Input
+```
+s5cmd --no-sign-request ls s3://megascenes/databases/
+```
+
+Output
+```
+                                  DIR  descriptors/
+                                  DIR  main/
+                                  DIR  databases/
+```
+
+### Other Notes
+The `--no-sign-request` flag is for the user to access the AWS bucket without the need to create and supply AWS credentials.
+
+## Dataset Access via HTTP
+Singular files can be downloaded over HTTP (via `wget` or `curl`) using the base URL `https://megascenes.s3.us-west-2.amazonaws.com/`.
+
+For instance, [this URL](https://megascenes.s3.us-west-2.amazonaws.com/metadata/subcat/000/007/subcats.json) is a direct download for the subcategory information for scene-ID `7`.
 
 
-## Dataset Layout
+# Dataset Layout
 The bucket's directory tree is as follows:
 - `s3://megascenes/` or `https://megascenes.s3.us-west-2.amazonaws.com/`
     - `databases/`
