@@ -13,7 +13,10 @@ Specifically, MegaScenes uses the AWS S3 bucket URL `s3://megascenes/` in the `U
 
 ## Dataset Access via Command-line Interface (recommended)
 
-Users can access the dataset using [s5cmd](https://github.com/peak/s5cmd) (recommended) or [AWS CLI](https://aws.amazon.com/cli/). These programs are locally installed command-line interfaces that can access publicly hosted datasets on AWS. For the rest of this section, we will share some s5cmd commands. AWS CLI commands typically also work by replacing `s5cmd` with `aws s3` in the below examples.
+Users can access the dataset using [s5cmd](https://github.com/peak/s5cmd) or [AWS CLI](https://aws.amazon.com/cli/). These are locally installed command-line interfaces that can access datasets on AWS.
+Both CLI's have very similar commands, so an s5cmd command can typically be converted to an AWS CLI command by replacing the prefix `s5cmd` with `aws s3`.
+
+In this section, we will share some s5cmd commands.
 
 ### Downloading MegaScenes
 Copy a file or a directory locally: `s5cmd --no-sign-request cp <source_bucket_url> <local_dest>`
@@ -47,7 +50,6 @@ Output
 ```
                                   DIR  descriptors/
                                   DIR  main/
-                                  DIR  databases/
 ```
 
 ### Other Notes
@@ -56,7 +58,7 @@ The `--no-sign-request` flag is for the user to access the AWS bucket without th
 ## Dataset Access via HTTP
 Singular files can be downloaded over HTTP (via `wget` or `curl`) using the base URL `https://megascenes.s3.us-west-2.amazonaws.com/`.
 
-For instance, [this URL](https://megascenes.s3.us-west-2.amazonaws.com/metadata/subcat/000/007/subcats.json) is a direct download for the subcategory information for scene-ID `7`.
+For instance, https://megascenes.s3.us-west-2.amazonaws.com/metadata/subcat/000/007/subcats.json is a direct download for the subcategory information for scene-ID `7`.
 
 
 # Dataset Layout
