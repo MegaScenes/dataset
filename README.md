@@ -6,6 +6,8 @@ The MegaScenes Dataset is an extensive collection of around 430K scenes and 9M i
 
 To view reconstructions in the browser, see our [**Web Viewer**](https://megascenes.github.io/web-viewer/)!
 
+We provide a datasheet for MegaScenes [**here**](https://github.com/MegaScenes/datasheet).
+
 # Data Access
 The MegaScenes Dataset is hosted on [Amazon S3](https://aws.amazon.com/s3/) thanks to the [AWS Open Data Sponsorship Program](https://aws.amazon.com/opendata/).
 
