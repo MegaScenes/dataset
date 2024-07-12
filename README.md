@@ -11,6 +11,8 @@ The MegaScenes Dataset is hosted on [Amazon S3](https://aws.amazon.com/s3/) than
 
 Specifically, MegaScenes uses the AWS S3 bucket URL `s3://megascenes/` in the `US-West-2` AWS Region.
 
+All files are **individually hosted**, rather than chunked into `.tar` or `.zip` files.
+
 ## Dataset Access via Command-line Interface (recommended)
 
 Users can access the dataset using [s5cmd](https://github.com/peak/s5cmd) or [AWS CLI](https://aws.amazon.com/cli/). These are locally installed command-line interfaces that can access datasets on AWS.
@@ -38,7 +40,7 @@ This command recursively downloads the contents of the `images` folder from AWS 
 s5cmd --no-sign-request cp s3://megascenes/images/* ./MegaScenes/images/
 ```
 
-#### Example 3: Downloading a single file locally
+#### Example 3: Download a single file to local disk
 This command downloads a specific `database.db` file from AWS into its respective local folder:
 ```
 s5cmd --no-sign-request cp s3://megascenes/databases/main/000/000/database.db ./MegaScenes/databases/main/000/000/database.db
