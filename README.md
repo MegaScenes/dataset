@@ -18,29 +18,39 @@ Both CLI's have very similar commands, so an s5cmd command can typically be conv
 
 In this section, we will share some s5cmd commands.
 
-### Downloading MegaScenes
-Copy a file or a directory locally: `s5cmd --no-sign-request cp <source_bucket_url> <local_dest>`
+### How to Download MegaScenes to Local Disk
+To copy a file or a directory from AWS to local disk, use this command: `s5cmd --no-sign-request cp <source_bucket_url> <local_dest>`
 
 Alternatively, `sync` can be used instead of `cp`. `sync` additionally checks for differences between AWS and the locally downloaded dataset.
 
-#### Example 1: Downloading a specific directory locally
-If the source URL is a directory, then it must have a wildcard (`*`).
+> [!IMPORTANT]
+> If the source URL is a directory, then it must have a wildcard (`*`).
 
+#### Example 1: Download the entire MegaScenes dataset to local disk
+This command will download the entire dataset to a local folder called `MegaScenes/`.
+```
+s5cmd --no-sign-request cp s3://megascenes/* ./MegaScenes/
+```
+
+#### Example 2: Download a specific directory to local disk
 This command recursively downloads the contents of the `images` folder from AWS into the local folder `MegaScenes/images/`:
 ```
 s5cmd --no-sign-request cp s3://megascenes/images/* ./MegaScenes/images/
 ```
 
-#### Example 2: Downloading a single file locally
+#### Example 3: Downloading a single file locally
 This command downloads a specific `database.db` file from AWS into its respective local folder:
 ```
 s5cmd --no-sign-request cp s3://megascenes/databases/main/000/000/database.db ./MegaScenes/databases/main/000/000/database.db
 ```
 
-### Listing MegaScenes directory contents
-List directory contents: `s5cmd --no-sign-request ls <bucket_url>`
+### List MegaScenes directory contents on AWS
+List directory contents on AWS: `s5cmd --no-sign-request ls <bucket_url>`
+This command is helpful to see what items are in each directory before downloading them to the local machine.
 
 #### Example
+This command lists the contents of the `database/` subfolder on AWS.
+
 Input
 ```
 s5cmd --no-sign-request ls s3://megascenes/databases/
@@ -54,6 +64,8 @@ Output
 
 ### Other Notes
 The `--no-sign-request` flag is for the user to access the AWS bucket without the need to create and supply AWS credentials.
+
+For other commands, please see the [s5cmd](https://github.com/peak/s5cmd) or [AWS CLI](https://aws.amazon.com/cli/) documentation.
 
 ## Dataset Access via HTTP
 Singular files can be downloaded over HTTP (via `wget` or `curl`) using the base URL `https://megascenes.s3.us-west-2.amazonaws.com/`.
