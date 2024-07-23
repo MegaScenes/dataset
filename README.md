@@ -1,12 +1,24 @@
 # MegaScenes Dataset v1.0
 
-[**Paper**](https://megascenes.github.io/MegaScenes_paper_v1.pdf) | [**Arxiv**](https://arxiv.org/abs/2406.11819) | [**Project Page**](https://megascenes.github.io) <br>
+[**Paper**](https://megascenes.github.io/MegaScenes_paper_v1.pdf) | [**Arxiv**](https://arxiv.org/abs/2406.11819) | [**NVS Code**](https://github.com/MegaScenes/nvs) | [**Project Page**](https://megascenes.github.io) <br>
 
 The MegaScenes Dataset is an extensive collection of around 430K scenes and 9M images and epipolar geometries, featuring over 100K structure-from-motion reconstructions from 2M of these images. The images of these scenes are captured under varying conditions, including different times of day, various weather and illumination, and from different devices with distinct camera intrinsics.
 
 To view reconstructions in the browser, see our [**Web Viewer**](https://megascenes.github.io/web-viewer/)!
 
 We provide a datasheet for MegaScenes [**here**](https://github.com/MegaScenes/datasheet).
+
+If you find our dataset or paper useful, please consider citing
+
+```
+@inproceedings{
+      tung2024megascenes,
+      title={MegaScenes: Scene-Level View Synthesis at Scale}, 
+      author={Tung, Joseph and Chou, Gene and Cai, Ruojin and Yang, Guandao and Zhang, Kai and Wetzstein, Gordon and Hariharan, Bharath and Snavely, Noah},
+      journal={ECCV},
+      year={2024}
+    }
+```
 
 # Data Access
 The MegaScenes Dataset is hosted on [Amazon S3](https://aws.amazon.com/s3/) thanks to the [AWS Open Data Sponsorship Program](https://aws.amazon.com/opendata/).
