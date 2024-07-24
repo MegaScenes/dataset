@@ -10,7 +10,7 @@ We provide a datasheet for MegaScenes [**here**](https://github.com/MegaScenes/d
 
 If you find our dataset or paper useful, please consider citing
 
-```
+```bibtex
 @inproceedings{
       tung2024megascenes,
       title={MegaScenes: Scene-Level View Synthesis at Scale}, 
