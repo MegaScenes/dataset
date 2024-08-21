@@ -221,7 +221,7 @@ Here, the graph shows that the main category [Arco degli Argentari](https://comm
 The frontier list is empty, meaning that this subcategory graph is expanded in its entirety.
 
 ### Index of Images
-We provide an table that indexes the images in MegaScenes at `s3://megascenes/metadata/images_index.parquet` [(HTTPS download)](https://megascenes.s3.us-west-2.amazonaws.com/metadata/images_index.parquet) (~230 MB). This table contains over 8 million rows, each representing an image in the dataset. The columns are:
+We provide an table that indexes the images in MegaScenes at `s3://megascenes/metadata/images_index.parquet` [(HTTPS download)](https://megascenes.s3.us-west-2.amazonaws.com/metadata/images_index.parquet) (~230 MB). Parquet files store tabular data like CSV files, but are more compact and faster to read. They can be read using Python dataframe libraries, such as [Polars](https://docs.pola.rs/api/python/stable/reference/api/polars.read_parquet.html) (recommended) or [Pandas](https://pandas.pydata.org/docs/reference/api/pandas.read_parquet.html). This table contains over 8 million rows, each representing an image in the dataset. The columns are:
 
 - cat (str): Scene name, representative of a general category on Wikimedia Commons.
 - subcat (str): Subcategory of the scene from which the image is downloaded from on Wikimedia Commons.
@@ -236,9 +236,7 @@ We provide an table that indexes the images in MegaScenes at `s3://megascenes/me
 
 The respective Wikimedia Commons page for an image is at the URL `https://commons.wikimedia.org/wiki/File:{image_name}`. Likewise, the respective Wikimedia Commons page for a category is at the URL `https://commons.wikimedia.org/wiki/Category:{cat or subcat}`.
 
-While this table contains the parsed licensing information from Wikimedia Commons, we encourage the user to verify the image licenses. 
-
-Parquet files store tabular data like CSV files, but are more compact and faster to read. They can be read using Python dataframe libraries, such as [Polars](https://docs.pola.rs/api/python/stable/reference/api/polars.read_parquet.html) (recommended) or [Pandas](https://pandas.pydata.org/docs/reference/api/pandas.read_parquet.html). 
+While this table contains the parsed licensing information from Wikimedia Commons, we encourage the user to verify the image licenses themselves.
 
 ### Wikidata Entries
 The `wikidata/` subcategory is organized by Wikidata Q-ID. The first three digits of the Q-ID define the three subfolders that the Wikidata JSON information can be found in. If the Q-ID has less than three digits, then its JSON resides in the `other/` folder. Unlike the scene IDs, this number is NOT zero-padded.
