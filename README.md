@@ -287,6 +287,14 @@ Specifically, the format is as follows:
                 - `cameras.bin`
                 - `points3D.bin`
 
+### Visualizing Reconstructions
+The sparse reconstructions in MegaScenes can be viewed using our [web viewer](https://megascenes.github.io/web-viewer/).
+
+Alternatively, reconstructions can be viewed locally using the [COLMAP GUI](https://colmap.github.io/gui.html) (requires a COLMAP installation).
+
+### Loading Reconstructions in Scripts
+The reconstructions can be loaded in Python using the [read_write_model.py](https://github.com/colmap/colmap/blob/main/scripts/python/read_write_model.py) script from the COLMAP repository. Specifically, the helpful functions are: `read_model`, `read_points3D_binary`, `read_images_binary`, `read_cameras_binary`
+
 ## Scene Folders
 The dataset uses a system of two subfolders to divide scenes, where each scene has a scene-ID number. The first subfolder uses the first three digits of the 6-digit zero-padded scene ID. The second subfolder uses the last three digits. The data associated with the scene resides in the latter subfolder.
 
@@ -299,7 +307,8 @@ Each scene is based off of a category from Wikimedia Commons. For instance, the 
 The file `s3://megascenes/metadata/categories.json` [(HTTP Link)](https://megascenes.s3.us-west-2.amazonaws.com/metadata/categories.json) links the category name to the scene-ID.
 
 # Contributions, Issues, and Suggestions
-We are continually looking for ways to improve the dataset. If you find any incorrect reconstructions, please create an GitHub [issue](https://github.com/MegaScenes/dataset/issues) or [discussion post](https://github.com/MegaScenes/dataset/discussions).
+If you find any incorrect reconstructions or have improvements for the dataset, please create an GitHub [issue](https://github.com/MegaScenes/dataset/issues) or [discussion post](https://github.com/MegaScenes/dataset/discussions).
 
 # License
-This dataset is licensed under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/). The photos in the `images/` folder have their own licenses.
+This dataset is licensed under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/). The photos in the `images/` folder have their own licenses. 
+ 
