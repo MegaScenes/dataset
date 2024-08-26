@@ -25,7 +25,7 @@ The MegaScenes Dataset is hosted on [Amazon S3](https://aws.amazon.com/s3/) than
 
 Specifically, MegaScenes uses the AWS S3 bucket URL `s3://megascenes/` in the `US-West-2` AWS Region.
 
-All files are **individually hosted**, rather than chunked into `.tar` or `.zip` files.
+All files can be **individually downloaded**. They are **not** chunked into `.tar` or `.zip` files.
 
 ## Dataset Access via Command-line Interface (recommended)
 
@@ -60,6 +60,9 @@ This command downloads a specific `database.db` file from AWS into its respectiv
 s5cmd --no-sign-request cp s3://megascenes/databases/main/000/000/database.db ./MegaScenes/databases/main/000/000/database.db
 ```
 
+#### Downloading subsets of MegaScenes
+It is possible to use s5cmd to define subsets of MegaScenes to download; this is done with `s5cmd run` with a text file of s5cmd commands. For more information, see s5cmd's documentation on [running multiple commands in parallel](https://github.com/peak/s5cmd/blob/master/README.md#run-multiple-commands-in-parallel).
+
 ### List MegaScenes directory contents on AWS
 List directory contents on AWS: `s5cmd --no-sign-request ls <bucket_url>`
 This command is helpful to see what items are in each directory before downloading them to the local machine.
@@ -67,12 +70,12 @@ This command is helpful to see what items are in each directory before downloadi
 #### Example
 This command lists the contents of the `database/` subfolder on AWS.
 
-Input
+Input:
 ```
 s5cmd --no-sign-request ls s3://megascenes/databases/
 ```
 
-Output
+Output:
 ```
                                   DIR  descriptors/
                                   DIR  main/
@@ -186,7 +189,8 @@ The `metadata/` directory has the following contents:
 
 - `subcat/` (386 MB), which is a directory that contains JSON files of subcategory information for scenes with at least one subcategory
 - `wikidata/` (4.5 GB), which is a directory contains JSON files for all Wikidata entries related to a scene or their heirarchical classes
-- `categories.json` (19.2 MB), which is dictionary that maps a Wikimedia Commons category name to a scene-ID.
+- `categories.json` (19.2 MB), which is a dictionary that maps a Wikimedia Commons category name to a scene-ID.
+- `images_index.parquet` (~230 MB), which is a tabular index of all images in MegaScenes
 
 ### Subcategory Information
 Subcategory information resides in the `metadata/subcat/` directory. This directory is organized by scene-ID number as described in [Scene Folders](#scene-folders).
@@ -284,18 +288,18 @@ Specifically, the format is as follows:
                 - `points3D.bin`
 
 ## Scene Folders
-The dataset uses a system of two subfolders to divide scenes; each scene has a scene-ID number. The first subfolder uses the first three digits of the 6-digit zero-padded scene ID. The second subfolder uses the last three digits. The data associated with the scene resides in the latter subfolder.
+The dataset uses a system of two subfolders to divide scenes, where each scene has a scene-ID number. The first subfolder uses the first three digits of the 6-digit zero-padded scene ID. The second subfolder uses the last three digits. The data associated with the scene resides in the latter subfolder.
 
 For example:
 - If a scene has an ID of `533`, it is zero-padded to `000533`. This number translates to the directory `000/533/`.
 - If a scene has an id of `422678`, it translates to the directory `422/678/`.
 
-Each scene is based off of a category from Wikimedia Commons. For instance, the scene "Arc_de_Triomphe_de_l'Étoile" uses images from [Category:Arc de Triomphe de l'Étoile](https://commons.wikimedia.org/wiki/Category:Arc_de_Triomphe_de_l%27%C3%89toile) and its subcategories. MegaScens use underscores instead of spaces for scene names, but they are interchangable when used in Wikimedia Commons URLs.
+Each scene is based off of a category from Wikimedia Commons. For instance, the scene "Arc_de_Triomphe_de_l'Étoile" uses images from [Category:Arc de Triomphe de l'Étoile](https://commons.wikimedia.org/wiki/Category:Arc_de_Triomphe_de_l%27%C3%89toile) and its subcategories. MegaScenes use underscores instead of spaces for scene names, but they are interchangable when used in Wikimedia Commons URLs.
 
 The file `s3://megascenes/metadata/categories.json` [(HTTP Link)](https://megascenes.s3.us-west-2.amazonaws.com/metadata/categories.json) links the category name to the scene-ID.
 
 # Contributions, Issues, and Suggestions
-We are continually looking for ways to improve the dataset. If you find any incorrect reconstructions, please create an GitHub issue [here](https://github.com/MegaScenes/dataset/issues) or discussion post [here](https://github.com/MegaScenes/dataset/wiki).
+We are continually looking for ways to improve the dataset. If you find any incorrect reconstructions, please create an GitHub [issue](https://github.com/MegaScenes/dataset/issues) or [discussion post](https://github.com/MegaScenes/dataset/discussions).
 
 # License
 This dataset is licensed under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/). The photos in the `images/` folder have their own licenses.
