@@ -310,5 +310,5 @@ The file `s3://megascenes/metadata/categories.json` [(HTTP Link)](https://megasc
 If you find any incorrect reconstructions or have improvements for the dataset, please create an GitHub [issue](https://github.com/MegaScenes/dataset/issues) or [discussion post](https://github.com/MegaScenes/dataset/discussions).
 
 # License
-This dataset is licensed under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/). The photos in the `images/` folder have their own licenses. 
+This dataset is licensed under the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/). The photos in the `images/` folder have their own licenses; see [Index of Images](https://github.com/MegaScenes/dataset/blob/main/README.md#index-of-images) for additional details.
  
